@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie - Blox Fruits Fan Club</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Blox Fruits <span>Fan Club</span></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="gallery.html" class="active">Galerie</a></li>
+                <li><a href="fruits.html">Fruits</a></li>
+                <li><a href="swords.html">Épées</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button id="loginBtn" class="login-btn">Se connecter</button>
+            <button id="registerBtn" class="register-btn">S'inscrire</button>
+            <div id="userInfo" class="user-info" style="display: none;">
+                <span id="username"></span>
+                <button id="logoutBtn">Déconnexion</button>
+            </div>
+        </div>
+    </header>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="loginForm">
+                <h2>Connexion</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="loginUsername">Nom d'utilisateur</label>
+                        <input type="text" id="loginUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Mot de passe</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit">Se connecter</button>
+                </form>
+                <p>Pas encore de compte? <a href="#" id="switchToRegister">S'inscrire</a></p>
+            </div>
+            <div id="registerForm" style="display: none;">
+                <h2>Inscription</h2>
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="registerUsername">Nom d'utilisateur</label>
+                        <input type="text" id="registerUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Mot de passe</label>
+                        <input type="password" id="registerPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmer le mot de passe</label>
+                        <input type="password" id="confirmPassword" required>
+                    </div>
+                    <button type="submit">S'inscrire</button>
+                </form>
+                <p>Déjà un compte? <a href="#" id="switchToLogin">Se connecter</a></p>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section class="gallery-header">
+            <h2>Galerie de la communauté</h2>
+            <p>Partagez vos meilleures captures d'écran du jeu et admirez celles des autres joueurs!</p>
+        </section>
+
+        <section class="upload-section" id="uploadSection">
+            <div class="login-message" id="loginMessage">
+                <p>Connectez-vous pour uploader vos propres images</p>
+                <button id="galleryLoginBtn" class="btn-primary">Se connecter</button>
+            </div>
+            
+            <div class="upload-form" id="uploadForm" style="display: none;">
+                <h3>Ajouter une nouvelle image</h3>
+                <form id="imageUploadForm">
+                    <div class="form-group">
+                        <label for="imageTitle">Titre</label>
+                        <input type="text" id="imageTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="imageDescription">Description</label>
+                        <textarea id="imageDescription" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="imageFile">Sélectionner une image</label>
+                        <input type="file" id="imageFile" accept="image/*" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="imageCategory">Catégorie</label>
+                        <select id="imageCategory">
+                            <option value="gameplay">Gameplay</option>
+                            <option value="fruit">Fruit du Démon</option>
+                            <option value="combat">Combat</option>
+                            <option value="scenery">Paysage</option>
+                            <option value="other">Autre</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-upload">Uploader</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="gallery-filters">
+            <h3>Filtrer par catégorie:</h3>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">Tous</button>
+                <button class="filter-btn" data-category="gameplay">Gameplay</button>
+                <button class="filter-btn" data-category="fruit">Fruits</button>
+                <button class="filter-btn" data-category="combat">Combat</button>
+                <button class="filter-btn" data-category="scenery">Paysages</button>
+                <button class="filter-btn" data-category="other">Autre</button>
+            </div>
+        </section>
+
+        <section class="gallery-grid" id="galleryGrid">
+            <!-- Les images seront chargées ici par JavaScript -->
+            <div class="no-images-message" id="noImagesMessage">
+                <p>Aucune image n'a encore été partagée. Soyez le premier à uploader une image!</p>
+            </div>
+        </section>
+
+        <!-- Fenêtre modale pour afficher les images en grand format -->
+        <div id="imageModal" class="image-modal">
+            <span class="image-modal-close">&times;</span>
+            <div class="image-modal-content">
+                <img id="modalImage" src="" alt="">
+                <div class="image-info">
+                    <h3 id="modalTitle"></h3>
+                    <p id="modalDescription"></p>
+                    <p id="modalAuthor"></p>
+                    <p id="modalDate"></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>Blox Fruits Fan Club</h2>
+                <p>Le site des fans, par les fans, pour les fans</p>
+            </div>
+            <div class="footer-links">
+                <h3>Liens rapides</h3>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="gallery.html">Galerie</a></li>
+                    <li><a href="fruits.html">Fruits</a></li>
+                    <li><a href="swords.html">Épées</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Suivez-nous</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitch"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Blox Fruits Fan Club. Ce site est créé par des fans et n'est pas affilié avec les développeurs officiels de Blox Fruits.</p>
+        </div>
+    </footer>
+
+    <script src="static/js/auth.js"></script>
+    <script src="static/js/gallery.js"></script>
+</body>
+</html>

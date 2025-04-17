@@ -1,0 +1,62 @@
+/* Custom styles to complement Bootstrap */
+
+/* Add some spacing to icons in forms */
+.form-icon {
+    width: 16px;
+    margin-right: 8px;
+}
+
+/* Improve cursor for clickable elements */
+[role="button"], 
+button, 
+a {
+    cursor: pointer;
+}
+
+/* Smooth transitions for hover effects */
+.card,
+.btn {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Card hover effect */
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Phone number style */
+.phone-number {
+    font-family: monospace;
+    letter-spacing: 0.5px;
+}
+
+/* Ensure search input has focus styling consistent with theme */
+.search-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(var(--bs-info-rgb), 0.25);
+}
+
+/* Empty state styling */
+.empty-state {
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.empty-state-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+/* Custom styles for mobile view */
+@media (max-width: 576px) {
+    .card-actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+    }
+    
+    .search-input {
+        margin-bottom: 1rem;
+    }
+}

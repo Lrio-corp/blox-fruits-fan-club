@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blox Fruits Fan Club</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Blox Fruits <span>Fan Club</span></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Accueil</a></li>
+                <li><a href="gallery.html">Galerie</a></li>
+                <li><a href="fruits.html">Fruits</a></li>
+                <li><a href="swords.html">Épées</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button id="loginBtn" class="login-btn">Se connecter</button>
+            <button id="registerBtn" class="register-btn">S'inscrire</button>
+            <div id="userInfo" class="user-info" style="display: none;">
+                <span id="username"></span>
+                <button id="logoutBtn">Déconnexion</button>
+            </div>
+        </div>
+    </header>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="loginForm">
+                <h2>Connexion</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="loginUsername">Nom d'utilisateur</label>
+                        <input type="text" id="loginUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Mot de passe</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit">Se connecter</button>
+                </form>
+                <p>Pas encore de compte? <a href="#" id="switchToRegister">S'inscrire</a></p>
+            </div>
+            <div id="registerForm" style="display: none;">
+                <h2>Inscription</h2>
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="registerUsername">Nom d'utilisateur</label>
+                        <input type="text" id="registerUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Mot de passe</label>
+                        <input type="password" id="registerPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmer le mot de passe</label>
+                        <input type="password" id="confirmPassword" required>
+                    </div>
+                    <button type="submit">S'inscrire</button>
+                </form>
+                <p>Déjà un compte? <a href="#" id="switchToLogin">Se connecter</a></p>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Bienvenue dans le monde de Blox Fruits!</h2>
+                <p>Découvrez tout sur l'univers passionnant de Blox Fruits, partagez vos captures d'écran et rejoignez notre communauté de fans!</p>
+                <a href="#features" class="btn-primary">En savoir plus</a>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <h2 class="section-title">Caractéristiques du jeu</h2>
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <h3>Fruits du Démon</h3>
+                    <p>Découvrez plus de 20 fruits du démon uniques avec des pouvoirs extraordinaires qui changeront votre façon de jouer.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-swords"></i>
+                    </div>
+                    <h3>Combat</h3>
+                    <p>Maîtrisez différents styles de combat comme l'épée, le fusil et les arts martiaux pour vaincre vos ennemis.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-island-tropical"></i>
+                    </div>
+                    <h3>Exploration</h3>
+                    <p>Explorez un vaste monde avec plusieurs îles, chacune avec ses propres défis, ennemis et trésors à découvrir.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Multijoueur</h3>
+                    <p>Rejoignez des équipes, combattez d'autres joueurs et participez à des événements spéciaux en temps réel.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="news">
+            <h2 class="section-title">Dernières Actualités</h2>
+            <div class="news-container">
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="static/images/news1.jpg" alt="Mise à jour du jeu">
+                    </div>
+                    <div class="news-content">
+                        <h3>Nouvelle mise à jour 17.2</h3>
+                        <p class="news-date">15 avril 2025</p>
+                        <p>La dernière mise à jour apporte de nouveaux fruits, équilibrages et une toute nouvelle île à explorer!</p>
+                        <a href="#" class="read-more">Lire plus</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="static/images/news2.jpg" alt="Événement spécial">
+                    </div>
+                    <div class="news-content">
+                        <h3>Événement Spécial du Week-end</h3>
+                        <p class="news-date">10 avril 2025</p>
+                        <p>Double XP et augmentation des taux de drop des fruits rares pour tout le week-end!</p>
+                        <a href="#" class="read-more">Lire plus</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="static/images/news3.jpg" alt="Guide débutant">
+                    </div>
+                    <div class="news-content">
+                        <h3>Guide du Débutant 2025</h3>
+                        <p class="news-date">5 avril 2025</p>
+                        <p>Notre nouveau guide pour les débutants est maintenant disponible, avec toutes les astuces pour bien démarrer.</p>
+                        <a href="#" class="read-more">Lire plus</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>Blox Fruits Fan Club</h2>
+                <p>Le site des fans, par les fans, pour les fans</p>
+            </div>
+            <div class="footer-links">
+                <h3>Liens rapides</h3>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="gallery.html">Galerie</a></li>
+                    <li><a href="fruits.html">Fruits</a></li>
+                    <li><a href="swords.html">Épées</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Suivez-nous</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitch"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Blox Fruits Fan Club. Ce site est créé par des fans et n'est pas affilié avec les développeurs officiels de Blox Fruits.</p>
+        </div>
+    </footer>
+
+    <script src="static/js/auth.js"></script>
+    <script src="static/js/main.js"></script>
+</body>
+</html>
